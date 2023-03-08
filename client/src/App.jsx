@@ -1,8 +1,24 @@
+import React from 'react'
+import { useGlobalContext } from './context'
+
+// components
+import Navbar from './components/Navbar'
+import CartContainer from './components/CartContainer'
+// items
+
 function App() {
+  // if (loading) {
+  //   return (
+  //     <div className='loading'>
+  //       <h1>Loading...</h1>
+  //     </div>
+  //   )
+  // }
   return (
-    <div className='container'>
-      <h1>App</h1>
-    </div>
+    <main>
+      <Navbar />
+      <CartContainer />
+    </main>
   )
 }
 
