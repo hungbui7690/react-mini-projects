@@ -30,6 +30,10 @@ const AppProvider = ({ children }) => {
   }
 
   // (1a)
+  const toggleAmount = (id, type) => {
+    dispatch({ type: 'TOGGLE_AMOUNT', payload: { id, type } })
+  }
+
   const fetchData = async () => {
     try {
       dispatch({ type: 'LOADING' })
@@ -41,7 +45,6 @@ const AppProvider = ({ children }) => {
     }
   }
 
-  // (1b)
   useEffect(() => {
     fetchData()
   }, [])
@@ -50,6 +53,7 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'GET_TOTALS' })
   }, [state.cart])
 
+  // (1b) go to CartItem.jsx
   return (
     <AppContext.Provider
       value={{
@@ -58,6 +62,7 @@ const AppProvider = ({ children }) => {
         remove,
         increase,
         decrease,
+        toggleAmount,
       }}
     >
       {children}

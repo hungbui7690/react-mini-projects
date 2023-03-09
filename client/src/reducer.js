@@ -52,15 +52,38 @@ const reducer = (state, action) => {
       amount: amount,
     }
   }
-
-  // (2a)
   if (action.type === 'LOADING') {
     return { ...state, loading: true }
   }
-
-  // (2b)
   if (action.type === 'DISPLAY_ITEMS') {
     return { ...state, cart: action.payload, loading: false }
+  }
+
+  // (3)
+  if (action.type === 'TOGGLE_AMOUNT') {
+    let tempCart = state.cart
+      .map((cartItem) => {
+        if (cartItem.id === action.payload.id) {
+          // (a)
+          if (action.payload.type === 'dec')
+            return {
+              ...cartItem,
+              amount: cartItem.amount === 0 ? 0 : cartItem.amount - 1,
+            }
+
+          // (b)
+          if (action.payload.type === 'inc')
+            return {
+              ...cartItem,
+              amount: cartItem.amount + 1,
+            }
+        }
+
+        return cartItem
+      })
+      .filter((item) => item.amount > 0)
+
+    return { ...state, cart: tempCart }
   }
 
   throw new Error(`No matching ${action.type} action type`)

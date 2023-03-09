@@ -1,5 +1,6 @@
 /*
-  Fetch Data
+  Toggle Amount [Combine Increase() & Decrease()]
+  - merge decrease & increase into a single method
 
   (1) context.jsx
 
