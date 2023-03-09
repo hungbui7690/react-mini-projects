@@ -22,8 +22,6 @@ const AppProvider = ({ children }) => {
   const remove = (id) => {
     dispatch({ type: 'REMOVE', payload: id })
   }
-
-  // (1a)
   const increase = (id) => {
     dispatch({ type: 'INCREASE', payload: id })
   }
@@ -31,7 +29,6 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'DECREASE', payload: id })
   }
 
-  // (1b) pass > go to CartItem
   return (
     <AppContext.Provider
       value={{

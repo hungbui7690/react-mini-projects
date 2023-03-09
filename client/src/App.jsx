@@ -1,9 +1,9 @@
 /*
-  Increase Amount
-  - amount === single item amount
-    > check file data.js > we will see the amount of single item there
+  Decrease Amount
+  - last lecture, if amount === 0, then we don't want to decrease 
+  - this lecture, if amount === 0, we want to remove that item
 
-  (1) context.jsx
+  (1) reducer.jsx
 */
 
 import React from 'react'

@@ -8,12 +8,10 @@ const reducer = (state, action) => {
     )
     return { ...state, cart: newCart }
   }
-
-  // (3)
   if (action.type === 'INCREASE') {
     let tempCart = state.cart.map((cartItem) => {
       if (cartItem.id === action.payload) {
-        return { ...cartItem, amount: cartItem.amount + 1 } // (***) MUST COPY before modify > important
+        return { ...cartItem, amount: cartItem.amount + 1 }
       }
 
       return cartItem
@@ -22,17 +20,20 @@ const reducer = (state, action) => {
     return { ...state, cart: tempCart }
   }
 
+  // (***)
   if (action.type === 'DECREASE') {
-    let tempCart = state.cart.map((cartItem) => {
-      if (cartItem.id === action.payload) {
-        return {
-          ...cartItem,
-          amount: cartItem.amount === 0 ? 0 : cartItem.amount - 1,
-        } // (***) if amount === 0, then don't decrease
-      }
+    let tempCart = state.cart
+      .map((cartItem) => {
+        if (cartItem.id === action.payload) {
+          return {
+            ...cartItem,
+            amount: cartItem.amount === 0 ? 0 : cartItem.amount - 1,
+          }
+        }
 
-      return cartItem
-    })
+        return cartItem
+      })
+      .filter((item) => item.amount > 0) // (***) add this line to filter records
 
     return { ...state, cart: tempCart }
   }
