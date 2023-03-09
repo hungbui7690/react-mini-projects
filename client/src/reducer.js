@@ -19,8 +19,6 @@ const reducer = (state, action) => {
 
     return { ...state, cart: tempCart }
   }
-
-  // (***)
   if (action.type === 'DECREASE') {
     let tempCart = state.cart
       .map((cartItem) => {
@@ -33,9 +31,19 @@ const reducer = (state, action) => {
 
         return cartItem
       })
-      .filter((item) => item.amount > 0) // (***) add this line to filter records
+      .filter((item) => item.amount > 0)
 
     return { ...state, cart: tempCart }
+  }
+
+  // (2)
+  if (action.type === 'GET_TOTALS') {
+    const total = state.cart.reduce((acc, cur) => {
+      acc += cur.price * cur.amount
+      return acc
+    }, 0)
+
+    return { ...state, total: Number.parseFloat(total).toFixed(2) }
   }
 
   throw new Error(`No matching ${action.type} action type`)

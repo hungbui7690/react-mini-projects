@@ -1,9 +1,17 @@
 /*
-  Decrease Amount
-  - last lecture, if amount === 0, then we don't want to decrease 
-  - this lecture, if amount === 0, we want to remove that item
+  Get Totals
+  - total = {total, amount} > contains 2 items 
+  - to get the totals, we need to loop through all cart items, and multiple price with amount for each item 
+    > then add them up
 
-  (1) reducer.jsx
+  - we need to think how to get the totals with reducer > since we don't have button to click to trigger reducer
+    > useEffect() and update every time cart changes
+
+
+
+  (1) context.jsx
+
+  (***) later, we will combine decrease & increase into one function
 */
 
 import React from 'react'

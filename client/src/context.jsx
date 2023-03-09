@@ -29,6 +29,11 @@ const AppProvider = ({ children }) => {
     dispatch({ type: 'DECREASE', payload: id })
   }
 
+  // (1) go directly to reducer.js
+  useEffect(() => {
+    dispatch({ type: 'GET_TOTALS' })
+  }, [state.cart])
+
   return (
     <AppContext.Provider
       value={{
