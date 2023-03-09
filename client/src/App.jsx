@@ -1,5 +1,7 @@
 /*
-  Remove Single Item
+  Increase Amount
+  - amount === single item amount
+    > check file data.js > we will see the amount of single item there
 
   (1) context.jsx
 */
