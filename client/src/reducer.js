@@ -1,6 +1,10 @@
-// (1b)
 const reducer = (state, action) => {
-  return state
+  // (3) check RDT
+  if (action.type === 'CLEAR_CART') {
+    return { ...state, cart: [] }
+  }
+
+  throw new Error(`No matching ${action.type} action type`)
 }
 
 export default reducer

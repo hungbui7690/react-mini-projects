@@ -6,7 +6,6 @@ import reducer from './reducer'
 
 const AppContext = React.createContext()
 
-// (1a) go to reducer and setup
 const initialState = {
   loading: false,
   cart: cartItems,
@@ -15,14 +14,19 @@ const initialState = {
 }
 
 const AppProvider = ({ children }) => {
-  // (2) convert from useState to useReducer
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  // (2) don't use state.cart (error) > spread state out > go to Navbar.jsx
+  // (1a)
+  const clearCart = () => {
+    dispatch({ type: 'CLEAR_CART' })
+  }
+
+  // (1b) pass > go to CartContainer
   return (
     <AppContext.Provider
       value={{
         ...state,
+        clearCart,
       }}
     >
       {children}
