@@ -1,10 +1,7 @@
 /*
-  Get Totals P2
-  - total = {total, amount} > contains 2 items 
-    > we need the amount as well
+  Fetch Data
 
-
-  (1) reducer.jsx
+  (1) context.jsx
 
 */
 

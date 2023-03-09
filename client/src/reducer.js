@@ -35,8 +35,6 @@ const reducer = (state, action) => {
 
     return { ...state, cart: tempCart }
   }
-
-  // (***)
   if (action.type === 'GET_TOTALS') {
     const { total, amount } = state.cart.reduce(
       (acc, cur) => {
@@ -45,7 +43,7 @@ const reducer = (state, action) => {
 
         return acc
       },
-      { total: 0, amount: 0 } // (***)
+      { total: 0, amount: 0 }
     )
 
     return {
@@ -53,6 +51,16 @@ const reducer = (state, action) => {
       total: Number.parseFloat(total).toFixed(2),
       amount: amount,
     }
+  }
+
+  // (2a)
+  if (action.type === 'LOADING') {
+    return { ...state, loading: true }
+  }
+
+  // (2b)
+  if (action.type === 'DISPLAY_ITEMS') {
+    return { ...state, cart: action.payload, loading: false }
   }
 
   throw new Error(`No matching ${action.type} action type`)

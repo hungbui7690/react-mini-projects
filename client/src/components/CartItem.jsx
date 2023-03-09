@@ -1,9 +1,7 @@
 import React from 'react'
 import { useGlobalContext } from '../context'
 
-// (***) we can use props drilling & context API at the same time
 const CartItem = ({ id, img, title, price, amount }) => {
-  // (2a)
   const { remove, increase, decrease } = useGlobalContext()
 
   return (
