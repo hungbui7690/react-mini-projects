@@ -36,14 +36,23 @@ const reducer = (state, action) => {
     return { ...state, cart: tempCart }
   }
 
-  // (2)
+  // (***)
   if (action.type === 'GET_TOTALS') {
-    const total = state.cart.reduce((acc, cur) => {
-      acc += cur.price * cur.amount
-      return acc
-    }, 0)
+    const { total, amount } = state.cart.reduce(
+      (acc, cur) => {
+        acc.total += cur.price * cur.amount
+        acc.amount += cur.amount
 
-    return { ...state, total: Number.parseFloat(total).toFixed(2) }
+        return acc
+      },
+      { total: 0, amount: 0 } // (***)
+    )
+
+    return {
+      ...state,
+      total: Number.parseFloat(total).toFixed(2),
+      amount: amount,
+    }
   }
 
   throw new Error(`No matching ${action.type} action type`)
