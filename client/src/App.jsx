@@ -1,5 +1,5 @@
 /*
-  Clear Cart
+  Remove Single Item
 
   (1) context.jsx
 */
